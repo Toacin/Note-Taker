@@ -13,7 +13,7 @@ router.post('/notes', (req,res) => {
     fs.readFile("db/db.json", (err, data) => {
         const db = JSON.parse(data);
         db.push(req.body);
-        fs.writeFile("db/db.json", JSON.stringify(db, null, 2), err => err ? console.log(err) : console.log("success"));
+        fs.writeFile("db/db.json", JSON.stringify(db, null, 2), err => err ? console.log(err) : console.log("Successfully added note entry"));
     })
     res.json(req.body);
 })
@@ -23,7 +23,7 @@ router.delete('/notes/:id', (req,res) => {
     fs.readFile("db/db.json", (err, data) => {
         const db = JSON.parse(data);
         const updatedDB = db.filter((element) => element.id !== noteID);
-        fs.writeFile("db/db.json", JSON.stringify(updatedDB, null, 2), err => err ? console.log(err) : console.log("success"));
+        fs.writeFile("db/db.json", JSON.stringify(updatedDB, null, 2), err => err ? console.log(err) : console.log("Successfully deleted note entry"));
     })
     res.json("Success");
 })
